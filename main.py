@@ -18,7 +18,6 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 
-# Подключение роутов
 app.include_router(products_router, prefix="/api/v1/products")
 
 
@@ -27,7 +26,6 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     """
     Эндпоинт для генерации JWT токена.
     """
-    # Валидация пользователя (например, через базу данных)
     if form_data.username != "user" or form_data.password != "password":
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -35,6 +33,5 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
             headers={"WWW-Authenticate": "Bearer"},
         )
 
-    # Генерация токена
     access_token = create_access_token(data={"sub": form_data.username})
     return {"access_token": access_token, "token_type": "bearer"}

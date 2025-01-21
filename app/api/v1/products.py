@@ -30,7 +30,7 @@ async def create_product(
 
 @router.get("/subscribe/{artikul}")
 async def subscribe_to_product(
-    artikul: str, user: str = Depends(get_current_user)  # Извлечение пользователя из токена
+    artikul: str, user: str = Depends(get_current_user)
 ):
     schedule_product_update(artikul)
     return {"message": f"Subscribed to updates for product {artikul}"}

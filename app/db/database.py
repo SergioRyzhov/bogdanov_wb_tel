@@ -14,7 +14,7 @@ SessionLocal = sessionmaker(
 )
 
 async def init_db():
-    for attempt in range(10):  # Попытаться подключиться 10 раз
+    for attempt in range(10):
         try:
             async with engine.begin() as conn:
                 await conn.run_sync(Base.metadata.create_all)
@@ -22,7 +22,7 @@ async def init_db():
             return
         except Exception as e:
             print(f"Database not ready yet, retrying... ({attempt + 1}/10)")
-            await asyncio.sleep(2)  # Ждать 2 секунды перед следующей попыткой
+            await asyncio.sleep(2)
 
     raise Exception("Failed to connect to the database after 10 attempts")
 
