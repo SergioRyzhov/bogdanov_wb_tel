@@ -1,0 +1,13 @@
+fastapi
+aiogram==3.*
+sqlalchemy[asyncio]
+asyncpg
+apscheduler
+pydantic
+uvicorn
+alembic
+psycopg2-binary
+httpx
+python-jose
+passlib
+python-multipart
