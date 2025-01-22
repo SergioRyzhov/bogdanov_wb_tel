@@ -1,6 +1,7 @@
-from datetime import datetime, timezone
-import httpx
 import logging
+from datetime import datetime, timezone
+
+import httpx
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)

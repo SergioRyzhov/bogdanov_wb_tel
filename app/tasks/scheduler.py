@@ -1,5 +1,5 @@
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 jobstores = {
     "default": SQLAlchemyJobStore(url="postgresql+psycopg2://user:password@db:5432/database")

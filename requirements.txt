@@ -11,3 +11,7 @@ httpx
 python-jose
 passlib
 python-multipart
+aiogram
+python-dotenv
+pytest
+pytest-asyncio

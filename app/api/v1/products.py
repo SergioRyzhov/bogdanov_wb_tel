@@ -1,10 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.core.auth import get_current_user
+from app.core.parser import fetch_product_data
 from app.db.database import get_db
 from app.db.models import Product
-from app.core.parser import fetch_product_data
 from app.tasks.scheduler import schedule_product_update
-from app.core.auth import get_current_user  # Заменяем verify_token
 
 router = APIRouter()
 
@@ -13,7 +14,7 @@ router = APIRouter()
 async def create_product(
     artikul: str,
     db: AsyncSession = Depends(get_db),
-    user: str = Depends(get_current_user),  # Извлечение пользователя из токена
+    user: str = Depends(get_current_user),
 ):
     product_data = await fetch_product_data(artikul)
 
